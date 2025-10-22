@@ -1,23 +1,19 @@
+﻿// See https://aka.ms/new-console-template for more information
+Console.WriteLine("Hello, World!");
+
+Console.WriteLine("Preenchendo dados tarefa 01");
+var tarefa01 = new Tarefa();
+tarefa01.Nome = "Fazer compras";
+tarefa01.Descricao  = "Comprar arroz, feijão e frutas";
+tarefa01.DataCriacao = DateTime.Now; 
+tarefa01.Status = 1;
+tarefa01.DataExecucao = null;
+
+Console.WriteLine("Dados tarefa 01 preenchidos");
+
+Console.WriteLine("Inserindo dados no banco de dados");
+
 var operacoes = new Operacoes();
+int idInserido = operacoes.Criar(tarefa01);
 
-// Criar uma tarefa
-var novaTarefa = new Tarefa
-{
-    Nome = "Estudar para prova",
-    Descricao = "Revisar POO e Banco de Dados",
-    DataCriacao = DateTime.Now,
-    Status = 1,
-    DataExecucao = null
-};
-
-int id = operacoes.Criar(novaTarefa);
-Console.WriteLine($"Tarefa criada com ID: {id}");
-
-// Alterar a tarefa
-novaTarefa.Id = id;
-novaTarefa.Status = 2;
-novaTarefa.Descricao = "Revisar POO, Banco e MySQL";
-operacoes.Alterar(novaTarefa);
-
-// Excluir a tarefa
-operacoes.Excluir(id);
+Console.WriteLine($"Dados inseridos no banco de dados com sucesso. Id: {idInserido}");
